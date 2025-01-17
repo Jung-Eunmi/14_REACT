@@ -20,10 +20,24 @@
         */
 
         // 1. 인라인으로 이벤트 함수 정의
+        // const element = (
+        //     <>
+        //         <h1>Event Attribute</h1>
+        //         <button onClick={() => alert('안녕~')}>클릭해보슈</button>
+        //     </>
+        // );
+
+        // ReactDOM.createRoot(document.getElementById('root')).render(element);
+
+        // ★2. 이벤트 동작 시 사용 할 외부 함수
+        const onClickHandler = () => {
+            alert('까꿍~')
+        }
+        
         const element = (
             <>
                 <h1>Event Attribute</h1>
-                <button onClick={() => alert('안녕~')}>클릭해보슈</button>
+                <button onClick={onClickHandler}>클릭해보슈</button>
             </>
         );
 
