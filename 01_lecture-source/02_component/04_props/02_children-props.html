@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+    
+        function ChildrenPrinter(props) {
+
+            // 출력해서 console 창 확인해서 핑크색 키값으로 .으로 타고타고 값을 꺼낼 수 있다!
+            console.log(props);
+            return(
+                <>
+                    <h1>자식 노드가 가지고 있는 값은??</h1>
+                    <h3>children : {props.children} </h3>
+                </>
+            );
+        }
+
+        // 태그 내부에 있는 것은 내부에 정의한 키값으로 전달인자로 값이 전달, 
+        // 태그 밖에있는 것은 children 키값에 값이 전달
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            [
+                <ChildrenPrinter>텍스트</ChildrenPrinter>,
+                <ChildrenPrinter><div>텍스트</div></ChildrenPrinter>,
+                <ChildrenPrinter><div>1</div><div>2</div><div>3</div></ChildrenPrinter>
+            ]
+        );
+    
+    </script>
+</body>
+</html>
