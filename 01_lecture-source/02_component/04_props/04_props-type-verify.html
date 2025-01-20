@@ -24,17 +24,23 @@
             );
         }
 
-        /* propTypes 사용해보기 */
+        /* 
+            propTypes 사용해보기
+             지정한 타입과 맞추지않고, isRequired 시 값을 입력하지 않아도 정상적으로 동작하지만, 
+             console 창에는 경고 표시가 나온다.
+             이는 큰 규모의 프로젝트를 진행하거나 다른 개발자와 협업하게 될 때, 
+             해당 컴포넌트에 어떤 props 가 필요한지 기술함으로서 마치 주석처럼 
+             props 탕비, 필요여부 등을 기술할 수 있다. 
+        */
         PropsVerify.propTypes = {
-            name: PropTypes.string,
-            favoriteNumber: PropTypes.number.isRequired
+            name: PropTypes.string, // name props 속성은 string 타입이여야한다.
+            favoriteNumber: PropTypes.number.isRequired // favoriteNumber 는 숫자이면서, 반드시 입력해야한다.
         } 
 
         ReactDOM.createRoot(document.getElementById('root')).render(
             [
                 <PropsVerify name='홍길동' favoriteNumber={7}>텍스트</PropsVerify>,
                 <PropsVerify name={3}>텍스트</PropsVerify>
-            
             ]
         );
 
