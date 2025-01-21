@@ -29,25 +29,57 @@
             }
 
             /* 1. 직접 이벤트 속성에 이벤트 핸들러 함수 정의해서 연결해보기 */
+            // render() {
+
+            //     // this 로 나자신의 props 라는 것을 명시해주지않으면 찾지 못한다
+            //     console.log("props", this.props);
+
+            //     return(
+            //         <button onClick={()=> alert('인라인 함수 동작 확인!')}>
+            //             {this.props.children}
+            //         </button>
+            //     );
+            // }
+
+            /* 2. render 함수 외부에 이벤트 핸들러 함수 정의 후 참조 */
+            // onClickHandler = () => alert('외부에 정의한 함수 동작!');
+
+            // render() {
+            //     // 클래스 내부의 함수를 호출할 때는 this. 를 반드시 붙여야만 함수를 찾을 수 있다.
+            //     return(
+            //         <button onClick={this.onClickHandler}>
+            //             {this.props.children}
+            //         </button>
+            //     );
+            // }
+
+            /* 3. component 에 이벤트를 props 형태로 전달 후 연결 */
+
             render() {
 
-                // this 로 나자신의 props 라는 것을 명시해주지않으면 찾지 못한다
-                console.log("props", this.props);
+                console.log(this.props)
+
+                const {onClick, children} = this.props;
 
                 return(
-                    <button onClick={()=> alert('인라인 함수 동작 확인!')}>
-                        {this.props.children}
+                    <button onClick={onClick}>
+                        {children}
                     </button>
-                );
-                
+                )
             }
 
-        }        
+
+        }     
 
         
         ReactDOM.createRoot(document.getElementById('root'))
                 .render(
-                    <EventButton>이벤트버튼</EventButton>
+                    // 1, 2 전용 
+                    // <EventButton onClick>이벤트버튼</EventButton>
+
+                    <EventButton onClick={()=> alert('props 로 전달 후 이벤트 연결')}>
+                        이벤트버튼
+                    </EventButton>
                 );
 
     </script>
