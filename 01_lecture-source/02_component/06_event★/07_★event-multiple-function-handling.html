@@ -20,17 +20,31 @@
 
         function Login() {
 
-            const [userId, setUserId] = useState('');
-            const [userPwd, setUserPwd] = useState('');
+            const [form, setForm] = useState({
+                userId : '',
+                userPwd : ''
+            });
 
-            const onChangeUserId = e => setUserId(e.target.value);
-            const onChangeUserPwd = e => setUserPwd(e.target.value);
+            // form 이라는 객체에서 userId, userPwd 추출 => 구조분해 할당
+            const {userId, userPwd} = form;
+
+            const onChangeHandler = e => {
+                
+                const copyForm = {
+                    ...form,    // 스프레드 연산자로 기존 form 객체 복사
+                    [e.target.name] : e.target.value // 이벤트가 발생한 name 과 일치하는 프로퍼티 value 를 수정
+                }
+                
+                // 수정한 객체 넘기기
+                setForm(copyForm);
+            }
 
             const onClickHandler = () => {
-                alert(`아이디는 ${userId}\n비밀번호는 ${userPwd} 로 로그인되었습니다.`)
-                // 알러트창 뜬 후 초기화
-                setUserId('');
-                setUserPwd('');
+                alert(`아이디 ${userId} \n 비밀번호 ${userPwd}`)
+                setForm({
+                    userId: '',
+                    userPwd: ''
+                })
             }
 
             return(
@@ -41,7 +55,7 @@
                         type="text"
                         name="userId"
                         value={userId}
-                        onChange={onChangeUserId}             
+                        onChange={onChangeHandler}             
                     />
                     <br/>
 
@@ -50,7 +64,7 @@
                         type="password"
                         name="userPwd"
                         value={userPwd}
-                        onChange={onChangeUserPwd}        
+                        onChange={onChangeHandler}        
                     />
                     <br/>
 
