@@ -70,6 +70,7 @@
                    index 는 게시글 번호 등으로 사용하면 된다.
             */
             return(
+                // html 이 아니라 java script 를 jsx 문법으로 바꾸기때문에 반복문을 돌릴 수 있는것이다.
                 <ul>
                     {names.map((name, index) => <li key={index}>{name}</li>)}    
                 </ul>
