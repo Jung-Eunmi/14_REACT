@@ -29,10 +29,18 @@
         const {useEffect} = React;
         console.log(React);
         console.log(useEffect);
-
+        
         function Message({message}) {
 
-            useEffect()
+            /*
+                useEffect 는 마운트나 업데이트 이후 무엇인가 하고싶은 코드가
+                존재할 때 사용하는 hook 이다.
+            */ 
+
+            useEffect(() => {
+                console.log('랜더링 이후 동작하니?')
+                console.log(message);
+            });
 
             console.log('랜더링 동작함...');
 
