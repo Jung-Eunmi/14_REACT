@@ -56,19 +56,23 @@
                 default:
                     return state;
             }
-
         }
 
         // 컴포넌트
         function Counter(){
-            
-            // reducer 는 2가지의 인자를 가지고있다.
-            //  1. reducer 함수(외부함수)
-            //  2. 관리 할 상태(state)
+            /* 
+                reducer 는 2가지의 인자를 가지고있다.
+                 1. reducer 함수(외부함수)
+                 2. 관리 할 상태(state)
+            */
             console.log(useReducer(reducer,{value:0}))
 
             const [state, dispatch] = useReducer(reducer, {value:0});
 
+            /*
+                useReducer 의 목적
+                 - 컴포넌트가 더이상 스스로 set 하지 않게 상태 관리에 대한 부담감을 덜어주는 것
+            */ 
             return(
                 <>
                     <h1>Count : {state.value}</h1>

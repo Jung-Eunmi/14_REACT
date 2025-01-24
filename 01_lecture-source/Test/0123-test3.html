@@ -17,33 +17,36 @@
         const {useState, useEffect} = React;
 
         function InsertNumber() {
-
+            
+            const [insertNum, setInsertNum] = useState(0);
             useEffect(() => {
+                const testNum = prompt('숫자입력해보세요~');
+                
                 console.log('프롬포트창에서 입력한 후의 시간')
-
+                
                 const promptTime = new Date().toLocaleTimeString();
                 console.log(promptTime);
-        
-
             },[]);
-
-            const testNum = prompt('숫자입력해보세요~');
-
-            const [inputNum, setInputNum] = useState('');
             
             const onKeyUpHandler = (e) => {
-                setInputNum(
-                    ...inputNum,
-                    e.target.value
-                );
+                
+                if(e.key === 'Enter'){
+                    
+                    setInsertNum(e.target.value)
+                    console.log(insertNum)
 
+                    if(testNum === insertNum) {
+                    
+                    }
+                
+                }
             }
 
             return(
                 <>
                 <div>
-                    <h1>{testNum}</h1>
-                    <input type="text" onKeyUp={onKeyUpHandler}/>
+                    <h1>{useState}</h1>
+                    <input type="text" onKeyPress={onKeyUpHandler}/>
                 </div>
                 </>
             );            
