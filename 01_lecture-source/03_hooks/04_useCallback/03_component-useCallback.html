@@ -20,6 +20,22 @@
 
             const [size, setSize] = useState(200);
             const [isDark, setIsDark] = useState(false);
+            
+            // 자식 컴포넌트에 전달해 줄 값
+            // const squareStyle = {
+            //     backgroundColor: 'red',
+            //     width: `${size}px`,
+            //     height: `${size}px`
+            // }
+
+            const squareStyle = useCallback(() => {
+                // squareStyle 함수가 호출되면 return 할 객체 정의
+                return {
+                    backgroundColor: 'red',
+                    width: `${size}px`,
+                    height: `${size}px`
+                }
+            }, [size])
 
             return(
                 // style 은 어트리뷰트 => 자바스크립트 값을 넣겠다의 {} , 객체를 넣겠다의 {}
@@ -31,9 +47,29 @@
                         onChange={(e) => setSize(e.target.value)}    
                     />
                     <button onClick={() => setIsDark(!isDark)}>{isDark.toString()}</button>
+                    <Square squareStyle={squareStyle}/>
                 </div>
             );
+        }
 
+        function Square({squareStyle}) {
+            
+            const [style, setStyle] = useState({});
+
+            console.log('자식 업데이트 확인용 구문')
+
+            /*
+                부모인 App 컴포넌트가 업데이트 될 때마다 자식인 Square 컴포넌트도 리렌더링 된다.
+                부모가 주는 props 에 변화가 생길 때 자식도 어쩔 수없이 리랜더링 된다.
+            */
+            useEffect(() => {
+                console.log('style 변경!!');
+                setStyle(squareStyle());
+            }, [squareStyle])
+
+            return(
+                <div style={style}></div>
+            );
         }
 
         ReactDOM.createRoot(document.getElementById('root')).render(<App/>)
