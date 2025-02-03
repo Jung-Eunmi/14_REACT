@@ -72,6 +72,7 @@
                 return increase(number);
             })
             .catch(e => {
+                // reject 에 들어간 에러 객체를 콜백함수의 인수로 넣어준다.
                 console.log(e, '발생');
             })
             .finally(() => {
