@@ -9,3 +9,5 @@
   - MySQL default port : 3306 번
 
 - npm install (의존성 추가 = 라이브러리 추가)
+
+  - node_modules 용량이 크기때문에 평상시에는 삭제하고 npm install 로 다시 깔수있다.
