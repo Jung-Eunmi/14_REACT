@@ -3,6 +3,8 @@ import {useState, useEffect} from 'react';
 // MenuCode 가 넘어오는 시점이다. 
 // 해당 파라미터를 꺼내올 수 있는 useParams 라는 훅을 router 에서 제공하고있다.
 import {useParams} from 'react-router-dom';
+import { getMenuByMenuCode } from '../apis/MenuAPI';
+
 
 function MenuDetails() {
     // useParams 에 PathVariable 이 들어있는 것 확인함
@@ -15,7 +17,19 @@ function MenuDetails() {
         detail: {}
     });
 
-    
+    useEffect(() => {
+        setMenu(getMenuByMenuCode(menuCode));
+    },[])
+
+    return(
+        <>
+            <h2>{menu.menuName} 상세조회</h2>
+            <h3>가격 : {menu.menuPrice}</h3>
+            <h3>종류 : {menu.categoryName}</h3>
+            <h3>설명 : {menu.detail.description}</h3>
+            <img src={menu.detail.image} style={{maxWidth: 500}}/>
+        </>
+    );
 
 }
 
