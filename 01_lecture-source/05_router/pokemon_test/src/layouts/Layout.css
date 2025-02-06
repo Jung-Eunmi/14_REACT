@@ -1,0 +1,69 @@
+/* 전체 레이아웃 설정 */
+.layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* 헤더 고정 */
+.Header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px; /* 높이를 고정 */
+    background: #ffaa5a;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    z-index: 10;
+}
+
+/* 네비바 고정 (헤더 바로 아래) */
+.Navbar {
+    position: fixed;
+    top: 150px; /* Header의 높이만큼 아래로 이동 */
+    left: 0;
+    width: 100%;
+    background-color: rgb(233, 231, 231);
+    padding: 10px;
+    display: flex;
+    gap: 20px;
+    z-index: 5;  /* Header보다 한 단계 낮음 */
+}
+
+/* 네비바 내부 링크 스타일 */
+.Navbar a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+/* Outlet이 들어갈 메인 콘텐츠 영역 */
+.content {
+    flex-grow: 1;
+    margin-top: 180px;  /* Header(60px) + Navbar(50px) 만큼 여백 추가 */
+    margin-bottom: 50px; /* Footer 높이만큼 여백 */
+    overflow-y: auto;
+    padding: 20px;
+    background: #f9f9f9;
+}
+
+/* 푸터 고정 */
+.Footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: #ffc402;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    z-index: 10;
+}
