@@ -24,6 +24,21 @@
              3. 변경은 오직 순수 함수로만 가능하다. 
         */
 
+        // console.log(Redux);
+
+        const {createStore} = Redux;
+
+        // reducer 함수는 초기값(state) 와 행위(action) 을 전달 받는다. 
+        function reducer(state = 0, action) {
+
+        }
+
+        // 저장소를 만들때 리듀서를 함께 보내줘야 함
+        // store 가 제공하는 API 는 subscribe, dispatch, getState 등이 있다.
+        const store = createStore(reducer);
+        console.log(store);
+
+
     </script>
     
 </body>
