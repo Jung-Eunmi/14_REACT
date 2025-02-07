@@ -28,7 +28,7 @@ function Poketmon() {
           
           return (
             <PoketmonItem 
-              key={index} 
+              key={index}   
               pokeId={pokeId} 
               pokeName={list.name} 
             />
