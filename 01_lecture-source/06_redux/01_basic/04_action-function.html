@@ -71,7 +71,8 @@
         /*-------------------------------------------------------------*/
 
         function Count() {
-
+            
+            const count = useSelector(state => state)
             const dispatch = useDispatch();
 
             const increaseCount = () => {
@@ -80,12 +81,14 @@
             const decreaseCount = () => {
                 dispatch(decrease());
             }
-
-            <>
-                <h1>Count : </h1>
-                <button onClick={increaseCount}>+ 1</button>
-                <button onClick={decreaseCount}>- 1</button>
-            </>
+            
+            return(
+                <>
+                    <h1>Count : {count} </h1>
+                    <button onClick={increaseCount}>+ 1</button>
+                    <button onClick={decreaseCount}>- 1</button>
+                </>
+            );
         }
 
         /*-------------------------------------------------------------*/
@@ -106,10 +109,10 @@
 
         ReactDOM.createRoot(document.getElementById('root')).render(
             <Provider store={store}>
-                <App/>    
+                <Count/>    
             </Provider>
         )
-        
+
         /*-------------------------------------------------------------*/
         
 
