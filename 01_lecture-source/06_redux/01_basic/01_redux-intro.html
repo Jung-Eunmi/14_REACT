@@ -30,14 +30,41 @@
 
         // reducer 함수는 초기값(state) 와 행위(action) 을 전달 받는다. 
         function reducer(state = 0, action) {
+            
+            /*
+                action 은 스토어에 운반 할 데이터를 말하며 주문서의 개념이다. (스토어야~~해줘)
+                action 의 프로퍼티(키) 설정은 자유지만, type&payLoad 로 하자 
+                {
+                    type: 'ACTION_NAME',           
+                    payLoad: {name: '정은미', age: 31}
 
+                    -> type 는 필수, payLoad 는 옵션 
+                       payLoad 는 update 나 등등 변경할 값이 있어야할 때 사용
+                }
+            */
+
+            switch(action.type){
+                case 'INCREMENT' : 
+                    return state + 1;
+                case 'DECREMENT' : 
+                    return state - 1;
+                default :
+                    return state;
+            }
         }
 
         // 저장소를 만들때 리듀서를 함께 보내줘야 함
         // store 가 제공하는 API 는 subscribe, dispatch, getState 등이 있다.
         const store = createStore(reducer);
-        console.log(store);
+        // console.log(store);
 
+        
+        //스토어의 상태 변화를 구독한다.
+        store.subscribe( () => console.log(store.getState()) );
+
+        store.dispatch({type:'INCREMENT'});
+        store.dispatch({type:'INCREMENT'});
+        store.dispatch({type:'DECREMENT'});
 
     </script>
     
