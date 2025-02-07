@@ -13,7 +13,77 @@
 <body>
     <div id="root"></div>
 
-    <script type="text/babel"></script>
-    
+    <script type="text/babel">
+
+        // 1. ReactRedux, Redux(저장고생성은 Redux 에서 가능하다) 사용준비
+        // console.log(ReactRedux);
+        const {Provider, useSelector, useDispatch} = ReactRedux;
+        const {createStore} = Redux;
+        
+        // 2. 초기값 선언
+        const initialState = 0;
+
+        // 3. 액션(사용자의 요구사항)을 받아 State 를 변환하는 reducer 함수
+        function reducer(state = initialState, {type, payload}) {
+            switch(type) {
+                case 'INCREMENT' : 
+                    return state + payload.incrementValue;
+                case 'DECREMENT' : 
+                    return state - payload.decrementValue;
+                default : 
+                    return state;
+            }
+        }
+
+        // 4. 저장고 생성
+        const store = createStore(reducer);
+
+        function App() {
+
+            /*
+                useSelector 훅을 이용해서 store 에서 관리되는 state 를 이용할 수 있다. 
+                useSelector 는 반드시 인자로 state 를 
+                매개변수로 하는 함수를 콜백함수로 전달해야 한다.
+            */
+
+            // 6. store 에서 관리되는 state 에 접근
+            // console.log(useSelector((state) => state));
+            const count = useSelector((state) => state);
+            // 7. store 에서 reducer 함수를 추적하기 위한 dispatch 선언
+            const dispatch = useDispatch();
+
+            // 8. 상태를 변화할 때 dispatch 사용하기
+            const increase = () => {
+                // 액션 { type: , payLoad : }
+                dispatch({
+                    type : 'INCREMENT',
+                    payload : {incrementValue : 1}
+                })
+            }
+            const decrease = () => {
+                dispatch({
+                    type : 'DECREMENT',
+                    payload : {decrementValue : 1}
+                })
+            }
+
+            return(
+                <>
+                    <h1>Count : {count}</h1>
+                    <button onClick={increase}>+ 1</button>
+                    <button onClick={decrease}>- 1</button>
+                </>
+            );
+        }
+
+        // 5. Provider 는 스토어의 정보를 집어넣어서 
+        //    하위 컴포넌트들을 구독(사용할 수 있는) 상태로 만든다. 
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <Provider store={store}>
+                <App/>
+            </Provider>    
+        );
+
+    </script>
 </body>
 </html>
