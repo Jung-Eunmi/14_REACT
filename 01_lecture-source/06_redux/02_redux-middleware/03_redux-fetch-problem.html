@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/prop-types@15.8.1/prop-types.js"></script>
+    <script src="http://unpkg.com/redux@4.2.0/dist/redux.js"></script>
+    <script src="http://unpkg.com/react-redux@8.0.4/dist/react-redux.js"></script>
+    <script src="http://unpkg.com/redux-actions@2.6.5/dist/redux-actions.js"></script>
+    <script src="http://unpkg.com/redux-logger@3.0.6/dist/redux-logger.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // 사용 할 API : https://jsonplaceholder.typicode.com/users
+        // 배열 [ 객체 1, ...]
+
+        function App() {
+
+            const onClickHandler = () => {}
+
+            return(
+                <>
+                    <h1>회원 목록</h1>
+                    <button onClick={onClickHandler}>조회하기</button>
+                </>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <App/>
+        )
+
+    </script>    
+</body>
+</html>
